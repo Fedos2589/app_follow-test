@@ -1,12 +1,12 @@
 import './label.scss';
-import React from 'react';
+import React, { memo } from 'react';
 
 interface LabelProps {
     text: string;
 }
 
-const Label = ({ text }: LabelProps) => {
+const Label = memo(({ text }: LabelProps) => {
     return <div className="label">{text}</div>;
-};
+});
 
 export default Label;

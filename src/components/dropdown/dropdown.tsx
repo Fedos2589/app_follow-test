@@ -1,22 +1,28 @@
 import './dropdown.scss';
-import React from 'react';
+import React, { SyntheticEvent, memo } from 'react';
 import Label from '../label/label';
-import { Dropdown as LibraryDropdown, DropdownItemProps } from 'semantic-ui-react';
+import {
+    Dropdown as LibraryDropdown,
+    DropdownItemProps,
+    DropdownProps as LibraryDropdownProps,
+} from 'semantic-ui-react';
 
 interface DropdownProps {
     placeholder: string;
     label?: string;
     error?: boolean;
     options: DropdownItemProps[];
+    disabled?: boolean;
+    onChange(event: SyntheticEvent<HTMLElement>, data?: LibraryDropdownProps): void;
 }
 
-const Dropdown = ({ placeholder, label, error, options }: DropdownProps) => {
+const Dropdown = memo(({ label, ...props }: DropdownProps) => {
     return (
         <div className="dropdown">
             {label && <Label text={label} />}
-            <LibraryDropdown placeholder={placeholder} options={options} error={error} selection />
+            <LibraryDropdown selection fluid {...props} />
         </div>
     );
-};
+});
 
 export default Dropdown;

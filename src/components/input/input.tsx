@@ -1,5 +1,5 @@
 import './input.scss';
-import React from 'react';
+import React, { memo } from 'react';
 import Label from '../label/label';
 import { Input as LibraryInput } from 'semantic-ui-react';
 
@@ -9,13 +9,13 @@ interface InputProps {
     error?: boolean;
 }
 
-const Input = ({ placeholder, label, error }: InputProps) => {
+const Input = memo(({ label, ...props }: InputProps) => {
     return (
         <div className="input">
             {label && <Label text={label} />}
-            <LibraryInput placeholder={placeholder} error={error} />
+            <LibraryInput fluid {...props} />
         </div>
     );
-};
+});
 
 export default Input;

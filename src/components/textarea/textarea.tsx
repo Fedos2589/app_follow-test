@@ -1,5 +1,5 @@
 import './textarea.scss';
-import React from 'react';
+import React, { memo } from 'react';
 import Label from '../label/label';
 import { TextArea as LibraryTextArea } from 'semantic-ui-react';
 
@@ -9,13 +9,13 @@ interface TextAreaProps {
     error?: boolean;
 }
 
-const TextArea = ({ placeholder, label, error }: TextAreaProps) => {
+const TextArea = memo(({ label, ...props }: TextAreaProps) => {
     return (
         <div className="textarea">
             {label && <Label text={label} />}
-            <LibraryTextArea placeholder={placeholder} error={error} style={{ width: '100%' }} />
+            <LibraryTextArea style={{ width: '100%' }} {...props} />
         </div>
     );
-};
+});
 
 export default TextArea;

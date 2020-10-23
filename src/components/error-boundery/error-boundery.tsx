@@ -1,11 +1,11 @@
 import './error-boundery.scss';
-import React, { PropsWithChildren, cloneElement } from 'react';
+import React, { PropsWithChildren, cloneElement, memo } from 'react';
 
 interface ErrorBounderyProps {
     errorText?: string;
 }
 
-const ErrorBoundery = ({ errorText, children }: PropsWithChildren<ErrorBounderyProps>) => {
+const ErrorBoundery = memo(({ errorText, children }: PropsWithChildren<ErrorBounderyProps>) => {
     return (
         <div className="error-boundery">
             {console.log(children)}
@@ -13,6 +13,6 @@ const ErrorBoundery = ({ errorText, children }: PropsWithChildren<ErrorBounderyP
             {errorText && <span className="error-boundery__text">{errorText}</span>}
         </div>
     );
-};
+});
 
 export default ErrorBoundery;
