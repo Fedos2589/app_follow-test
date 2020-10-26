@@ -11,7 +11,7 @@ import { getCountryCode } from '../../helpers/getCountryCode';
 import { checkVAT, countries as vatCountries } from 'jsvat';
 import { Errors, hasErrors } from '../../helpers/hasErrors';
 import { isInEu, checkMinLength, checkNameFormat } from '../../helpers/validators';
-import errorsText from '../consts/errors';
+import errorsText from '../../consts/errors';
 
 interface MainFormProps {
     countries: Country[];
@@ -46,7 +46,6 @@ const MainForm = ({
     const [errors, setErrors] = useState<Errors>({});
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const countryIsInEu = useMemo(() => country && isInEu(country), [country]);
-
     const countryOptions = useMemo(
         () =>
             countries.map(({ country }) => ({
@@ -56,7 +55,6 @@ const MainForm = ({
             })),
         [countries],
     );
-
     const stateOptions = useMemo(
         () =>
             states.map((state) => ({
