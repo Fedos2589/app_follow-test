@@ -1,12 +1,14 @@
 import './textarea.scss';
-import React, { memo } from 'react';
+import React, { memo, ChangeEvent } from 'react';
 import Label from '../label/label';
 import { TextArea as LibraryTextArea } from 'semantic-ui-react';
 
 interface TextAreaProps {
     placeholder?: string;
     label?: string;
-    error?: boolean;
+    value?: number | string;
+    onChange?(e: ChangeEvent, data: TextAreaProps): void;
+    onBlur?(): void;
 }
 
 const TextArea = memo(({ label, ...props }: TextAreaProps) => {

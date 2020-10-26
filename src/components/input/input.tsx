@@ -1,12 +1,15 @@
 import './input.scss';
-import React, { memo } from 'react';
+import React, { memo, ChangeEvent } from 'react';
 import Label from '../label/label';
-import { Input as LibraryInput } from 'semantic-ui-react';
+import { Input as LibraryInput, InputOnChangeData } from 'semantic-ui-react';
 
 interface InputProps {
     placeholder?: string;
     label?: string;
     error?: boolean;
+    value?: string;
+    onChange?(e: ChangeEvent, data: InputOnChangeData): void;
+    onBlur?(): void;
 }
 
 const Input = memo(({ label, ...props }: InputProps) => {

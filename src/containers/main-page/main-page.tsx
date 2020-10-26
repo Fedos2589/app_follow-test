@@ -52,9 +52,8 @@ const MainPage = () => {
             </Button>
             <Modal onClose={handleClose} onOpen={handleOpen} open={isModalOpen} closeIcon>
                 <Modal.Content>
-                    <MainForm countries={countries} companyData={companyData} />
+                    <MainForm countries={countries} companyData={companyData} handleClose={handleClose} />
                 </Modal.Content>
-                <Modal.Actions></Modal.Actions>
             </Modal>
         </div>
     );

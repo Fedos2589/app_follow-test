@@ -13,6 +13,7 @@ interface DropdownProps {
     error?: boolean;
     options: DropdownItemProps[];
     disabled?: boolean;
+    value?: string;
     onChange(event: SyntheticEvent<HTMLElement>, data?: LibraryDropdownProps): void;
 }
 

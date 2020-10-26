@@ -8,7 +8,6 @@ interface ErrorBounderyProps {
 const ErrorBoundery = memo(({ errorText, children }: PropsWithChildren<ErrorBounderyProps>) => {
     return (
         <div className="error-boundery">
-            {console.log(children)}
             {children && cloneElement(children as React.ReactElement<any>, { error: Boolean(errorText) })}
             {errorText && <span className="error-boundery__text">{errorText}</span>}
         </div>
