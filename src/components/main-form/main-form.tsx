@@ -156,7 +156,7 @@ const MainForm = ({
         const countryOfVat = checkVAT(vatId, vatCountries).country;
 
         if (!countryOfVat || countryOfVat.isoCode.short !== getCountryCode(country)) {
-            return setErrors({ ...errors, address: errorsText.address });
+            return setErrors({ ...errors, vatId: errorsText.vatId });
         }
     }, [country, errors, vatId]);
 
@@ -321,7 +321,7 @@ const MainForm = ({
                     <Grid.Row>
                         <Grid.Column>
                             <Button primary type="submit" disabled={hasErrors(errors) || isLoading}>
-                                Ввести данные
+                                Go to Checkout
                             </Button>
                         </Grid.Column>
                     </Grid.Row>
