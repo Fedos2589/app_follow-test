@@ -1,6 +1,6 @@
 import './main-form.scss';
 import React, { useMemo, useState, useCallback } from 'react';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { Country, CompanyData } from '../../containers/main-page/main-page';
 import Input from '../input/input';
 import ErrorBoundery from '../error-boundery/error-boundery';
@@ -17,6 +17,10 @@ interface MainFormProps {
     countries: Country[];
     companyData: CompanyData;
     handleClose(): void;
+}
+
+interface SaveResult {
+    ok: number;
 }
 
 const MainForm = ({
@@ -182,6 +186,7 @@ const MainForm = ({
             }
             if (!hasErrors(errors)) {
                 setIsLoading(true);
+
                 axios
                     .post('http://localhost:1337/save', {
                         name,
@@ -192,9 +197,12 @@ const MainForm = ({
                         vat: vatId,
                         zip_code: zipCode,
                     })
-                    .then((res) => {
+                    .then(({ data }: AxiosResponse<SaveResult>) => {
                         setIsLoading(false);
-                        handleClose();
+
+                        if (data.ok === 1) {
+                            handleClose();
+                        }
                     })
                     .catch((err) => setIsLoading(false));
             }
